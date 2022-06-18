@@ -58,9 +58,9 @@ export class LoginComponent implements OnInit {
             JSON.stringify(response.Inicio_exitoso)
           );
           if (response.Inicio_exitoso.rol == 'ADMIN') {
-            this._router.navigate(['/empresas']);
-          } else {
-            this._router.navigate(['/sucursales']);
+            this._router.navigate(['/hoteles']);
+          } else if(response.Inicio_exitoso.rol == "USUARIO"){
+            this._router.navigate(['/usuarios']);
           }
         });
       },

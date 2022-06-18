@@ -10,6 +10,8 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { BusquedaPipe } from './pipes/busqueda.pipe';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { HotelesComponent } from './components/hoteles/hoteles.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { BusquedaPipe } from './pipes/busqueda.pipe';
     NavbarComponent,
     RegistroComponent,
     BusquedaPipe,
+    UsuariosComponent,
+    HotelesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

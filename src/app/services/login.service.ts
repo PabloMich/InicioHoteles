@@ -49,14 +49,11 @@ export class LoginService {
     return this.identidad;
   }
 
-  registroEmpresa(modeloEmpresa: Entidad): Observable<any> {
-    let parametros = JSON.stringify(modeloEmpresa);
+  registroUsuarios(modeloUsuario: Entidad): Observable<any> {
+    let parametros = JSON.stringify(modeloUsuario);
 
-    return this._http.post(this.url + '/registrarse', parametros, {
+    return this._http.post(this.url + '/registro', parametros, {
       headers: this.headersVariable,
     });
   }
-
-
-
 }
