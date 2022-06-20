@@ -9,6 +9,7 @@ import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { UsuariosRegistradosComponent } from './components/usuarios-registrados/usuarios-registrados.component';
 import { VerificacionGuard } from './guards/verificacion.guard';
+import { GraficaHotelesComponent } from './components/grafica-hoteles/grafica-hoteles.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,12 +20,13 @@ const routes: Routes = [
   { path: '', component: InicioComponent },
   { path: 'administracion', component: AdministracionComponent },
   { path: 'registrados', component: UsuariosRegistradosComponent },
-  /*   {
+  { path: 'solicitados', component: GraficaHotelesComponent },
+  /* {
     path: 'administracion',
     component: UsuariosRegistradosComponent,
     canActivate: [VerificacionGuard],
     children: [{ path: 'registrados', component: InicioComponent }],
-  }, */
+  },  */
   { path: '**', component: InicioComponent },
 ];
 

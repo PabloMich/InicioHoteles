@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { Entidad } from 'src/app/models/entidad.model';
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
-import { environment } from 'src/environments/environment';
-import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +16,7 @@ export class LoginComponent implements OnInit {
   public identidad;
 
   constructor(private _loginService: LoginService, private _router: Router) {
-    this.modelo = new Entidad('', '', '', '', '', '', '', '');
+    this.modelo = new Entidad('', '', '', '', '', '', 0, '',0);
     this.identidad = JSON.parse(localStorage.getItem('identidad'));
   }
 

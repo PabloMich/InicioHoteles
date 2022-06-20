@@ -22,4 +22,31 @@ export class AdministracionService {
       headers: headersToken,
     });
   }
+
+  hoteles(token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/verHoteles', { headers: headersToken });
+  }
+
+  nuevoHotel(modeloHotel: Entidad, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    let parametros = JSON.stringify(modeloHotel);
+    return this._http.post(this.url + '/nuevoHotel', parametros, {
+      headers: headersToken,
+    });
+  }
+
+  eliminarHotel(id: String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.delete(this.url + '/borrarHotel/' + id, {
+      headers: headersToken,
+    });
+  }
+
+  masSolicitados(token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/masSolicitados', {
+      headers: headersToken,
+    });
+  }
 }

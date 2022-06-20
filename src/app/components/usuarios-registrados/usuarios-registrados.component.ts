@@ -22,7 +22,7 @@ export class UsuariosRegistradosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usuariosRegistrados()
+    this.usuariosRegistrados( )
   }
 
   usuariosRegistrados() {
@@ -38,4 +38,6 @@ export class UsuariosRegistradosComponent implements OnInit {
       },
     });
   }
+
+  
 }

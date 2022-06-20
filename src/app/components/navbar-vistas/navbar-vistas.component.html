@@ -22,6 +22,11 @@
           >Usuarios registrados</a
         >
       </li>
+      <li class="nav-item" *ngIf="this.identidad.rol == 'ADMIN'">
+        <a class="nav-link" routerLink="/solicitados" routerLinkActive="active"
+          >Hoteles más solicitados</a
+        >
+      </li>
       <li class="nav-item" *ngIf="this.identidad.rol == 'USUARIO'">
         <a class="nav-link" routerLink="/usuarios" routerLinkActive="active"
           >Inicio</a

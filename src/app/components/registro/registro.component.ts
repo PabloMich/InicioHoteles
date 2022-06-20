@@ -14,11 +14,11 @@ export class RegistroComponent implements OnInit {
   public postModelo: Entidad;
 
   constructor(private _loginService: LoginService, private _router: Router) {
-    this.postModelo = new Entidad('', '', '', '', '', '', '', '');
+    this.postModelo = new Entidad('', '', '', '', '', '', 0, '', 0);
   }
 
   ngOnInit(): void {
-    localStorage.clear()
+    localStorage.clear();
   }
 
   postUsuarios() {

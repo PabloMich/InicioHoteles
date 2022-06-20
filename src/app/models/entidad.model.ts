@@ -6,7 +6,8 @@ export class Entidad {
     public password:String,
     public rol:String,
     public direccion:String,
-    public cuartos:String,
+    public cuartos:Number,
     public gerente:String,
+    public solicitado:Number
   ){}
 }

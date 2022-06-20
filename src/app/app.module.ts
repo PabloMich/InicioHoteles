@@ -15,6 +15,8 @@ import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { NavbarVistasComponent } from './components/navbar-vistas/navbar-vistas.component';
 import { UsuariosRegistradosComponent } from './components/usuarios-registrados/usuarios-registrados.component';
+import { GraficaHotelesComponent } from './components/grafica-hoteles/grafica-hoteles.component';
+import { ChartsModule } from '@rinminase/ng-charts';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,9 @@ import { UsuariosRegistradosComponent } from './components/usuarios-registrados/
     AdministracionComponent,
     NavbarVistasComponent,
     UsuariosRegistradosComponent,
+    GraficaHotelesComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,ChartsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -2,31 +2,152 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Firsfsadft</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Cantidad de habitaciones</th>
+      <th scope="col">Gerente del hotel</th>
+      <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+    <tr *ngFor="let hoteles of getModelo">
+      <td>{{ hoteles.nombre }}</td>
+      <td>{{ hoteles.direccion }}</td>
+      <td>{{ hoteles.cuartos }}</td>
+      <td>{{ hoteles.gerente }}</td>
+      <td>
+        <!--         <a
+          ><button
+            data-bs-toggle="modal"
+            data-bs-target="#modalEditar"
+            class="btn btn-outline-secondary"
+          >
+            <i class="fa-solid fa-pen"></i></button
+        ></a> -->
+        <a
+          ><button
+            (click)="deleteHotel(hoteles._id)"
+            class="btn btn-outline-danger"
+          >
+            <i class="fa-solid fa-trash"></i></button
+        ></a>
+      </td>
     </tr>
   </tbody>
 </table>
 
+<button
+  id="ap"
+  class="btn btn-primary"
+  type="button"
+  data-bs-toggle="modal"
+  data-bs-target="#modalAgregarHotel"
+>
+  Nuevo hotel
+</button>
+
+<div
+  class="modal fade"
+  id="modalAgregarHotel"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo hotel</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #agregarHotel="ngForm">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              name="nombre"
+              #nombre="ngModel"
+              [(ngModel)]="postModelo.nombre"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Dirección</label>
+            <input
+              type="text"
+              class="form-control"
+              name="direccion"
+              #direccion="ngModel"
+              [(ngModel)]="postModelo.direccion"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Cantidad de habitaciones</label>
+            <input
+              type="number"
+              class="form-control"
+              name="cuartos"
+              #cuartos="ngModel"
+              [(ngModel)]="postModelo.cuartos"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nombre del Gerente</label>
+            <input
+              type="text"
+              class="form-control"
+              name="gerente"
+              #gerente="ngModel"
+              [(ngModel)]="postModelo.gerente"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              #email="ngModel"
+              [(ngModel)]="postModelo.email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              #password="ngModel"
+              [(ngModel)]="postModelo.password"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="postHotel(agregarHotel)"
+        >
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
