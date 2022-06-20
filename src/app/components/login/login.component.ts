@@ -4,6 +4,7 @@ import { Entidad } from 'src/app/models/entidad.model';
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -58,9 +59,11 @@ export class LoginComponent implements OnInit {
             JSON.stringify(response.Inicio_exitoso)
           );
           if (response.Inicio_exitoso.rol == 'ADMIN') {
-            this._router.navigate(['/hoteles']);
+            this._router.navigate(['/administracion']);
           } else if(response.Inicio_exitoso.rol == "USUARIO"){
             this._router.navigate(['/usuarios']);
+          }else if(response.Inicio_exitoso.rol=="HOTEL"){
+            this._router.navigate(["/hoteles"])
           }
         });
       },

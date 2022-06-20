@@ -17,5 +17,5 @@
   );
 }
 .requiredField {
-  color: darkgoldenrod;
+  color: red;
 }

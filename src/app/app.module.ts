@@ -12,6 +12,9 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { BusquedaPipe } from './pipes/busqueda.pipe';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { HotelesComponent } from './components/hoteles/hoteles.component';
+import { AdministracionComponent } from './components/administracion/administracion.component';
+import { NavbarVistasComponent } from './components/navbar-vistas/navbar-vistas.component';
+import { UsuariosRegistradosComponent } from './components/usuarios-registrados/usuarios-registrados.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { HotelesComponent } from './components/hoteles/hoteles.component';
     BusquedaPipe,
     UsuariosComponent,
     HotelesComponent,
+    AdministracionComponent,
+    NavbarVistasComponent,
+    UsuariosRegistradosComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
