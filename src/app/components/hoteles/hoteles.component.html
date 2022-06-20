@@ -1,2 +1,119 @@
 <app-navbar-vistas></app-navbar-vistas>
-<p>hoteles works!</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Espacio de personas</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cuartos of getModelo">
+      <td>{{ cuartos.nombre }}</td>
+      <td>{{ cuartos.espacio }}</td>
+      <td>{{ cuartos.disponibilidad }}</td>
+      <td>{{ cuartos.precio }}</td>
+      <td>
+        <!--         <a
+          ><button
+            data-bs-toggle="modal"
+            data-bs-target="#modalEditar"
+            class="btn btn-outline-secondary"
+          >
+            <i class="fa-solid fa-pen"></i></button
+        ></a> -->
+        <a
+          ><button
+            (click)="deleteHabitacion(cuartos._id)"
+            class="btn btn-outline-danger"
+          >
+            <i class="fa-solid fa-trash"></i></button
+        ></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button
+  id="ap"
+  class="btn btn-primary"
+  type="button"
+  data-bs-toggle="modal"
+  data-bs-target="#modalAgregarCuarto"
+>
+  Nueva habitación
+</button>
+
+<div
+  class="modal fade"
+  id="modalAgregarCuarto"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo cuarto</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #agregarCuarto="ngForm">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              name="nombre"
+              #nombre="ngModel"
+              [(ngModel)]="postModelo.nombre"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Espacio</label>
+            <input
+              type="number"
+              class="form-control"
+              name="espacio"
+              #espacio="ngModel"
+              [(ngModel)]="postModelo.espacio"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Precio</label>
+            <input
+              type="number"
+              class="form-control"
+              name="precio"
+              #precio="ngModel"
+              [(ngModel)]="postModelo.precio"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="postHabitacion(agregarCuarto)"
+        >
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
