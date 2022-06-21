@@ -1,15 +1,19 @@
 <app-navbar-vistas></app-navbar-vistas>
+
+
 <table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Nombre</th>
       <th scope="col">Email</th>
+      <th scope="col">Fecha de registro</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let usuarios of getModelo">
-      <td>{{usuarios.nombre}}</td>
-      <td>{{usuarios.email}}</td>
+      <td>{{ usuarios.nombre }}</td>
+      <td>{{ usuarios.email }}</td>
+      <td>{{ usuarios.dia }}/{{ usuarios.mes }}/{{ usuarios.anio }}</td>
     </tr>
   </tbody>
 </table>

@@ -17,6 +17,10 @@ import { NavbarVistasComponent } from './components/navbar-vistas/navbar-vistas.
 import { UsuariosRegistradosComponent } from './components/usuarios-registrados/usuarios-registrados.component';
 import { GraficaHotelesComponent } from './components/grafica-hoteles/grafica-hoteles.component';
 import { ChartsModule } from '@rinminase/ng-charts';
+import { EventosComponent } from './components/eventos/eventos.component';
+import { PruebaComponent } from './components/prueba/prueba.component';
+import { RouterHotelComponent } from './components/router-hotel/router-hotel.component';
+import { EditarComponent } from './components/editar/editar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import { ChartsModule } from '@rinminase/ng-charts';
     NavbarVistasComponent,
     UsuariosRegistradosComponent,
     GraficaHotelesComponent,
+    EventosComponent,
+    PruebaComponent,
+    RouterHotelComponent,
+    EditarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,ChartsModule],
   providers: [],

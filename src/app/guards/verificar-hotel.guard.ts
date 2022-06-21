@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class VerificacionGuard implements CanActivate {
+export class VerificarHotelGuard implements CanActivate {
   public identidad;
 
   constructor(public _router: Router) {}
   canActivate() {
-    if (this.obtenerIdentidad().rol !== 'ADMIN') {
+    if (this.obtenerIdentidad().rol !== 'HOTEL') {
       this._router.navigate(['/inicio']);
       return false;
     } else if (this.obtenerIdentidad() == null) {
@@ -30,4 +30,5 @@ export class VerificacionGuard implements CanActivate {
 
     return this.identidad;
   }
+
 }

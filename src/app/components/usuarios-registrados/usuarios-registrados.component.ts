@@ -14,6 +14,7 @@ export class UsuariosRegistradosComponent implements OnInit {
   public getModelo: Entidad;
   public token;
 
+
   constructor(
     private _adminService: AdministracionService,
     private _loginService: LoginService
@@ -40,4 +41,6 @@ export class UsuariosRegistradosComponent implements OnInit {
   }
 
   
+
+
 }

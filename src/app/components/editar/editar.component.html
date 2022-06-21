@@ -1,0 +1,153 @@
+<body>
+  <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-3 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <img
+            *ngIf="getIdModelo.rol == 'ADMIN'"
+            class="rounded-circle mt-5"
+            width="150px"
+            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+          />
+
+          <img
+            *ngIf="getIdModelo.rol == 'HOTEL'"
+            class="rounded-circle mt-5"
+            width="300px"
+            src="https://img.freepik.com/vector-gratis/hotel-o-motel-vector-edificio-ciudad-ciudad-ilustracion-dibujos-animados-plana-aislado-sobre-fondo-blanco_212005-309.jpg?w=740"
+          />
+
+          <span class="font-weight-bold">{{ getIdModelo.nombre }}</span
+          ><span> </span>
+        </div>
+      </div>
+      <div class="col-md-5 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Modificar perfil</h4>
+          </div>
+          <form #editForm="ngForm">
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <span
+                  *ngIf="!nombre.valid && nombre.touched"
+                  class="requiredField"
+                >
+                  Campo requerido
+                </span>
+                <label class="labels">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="nombre"
+                  required="true"
+                  #nombre="ngModel"
+                  [(ngModel)]="getIdModelo.nombre"
+                />
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <span
+                  *ngIf="!email.valid && email.touched"
+                  class="requiredField"
+                >
+                  Campo requerido
+                </span>
+                <label class="labels">Correo electrónico</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="email"
+                  #email="ngModel"
+                  required="true"
+                  [(ngModel)]="getIdModelo.email"
+                />
+              </div>
+              <div *ngIf="getIdModelo.rol == 'HOTEL'" class="col-md-12">
+                <span
+                  *ngIf="!direccion.valid && direccion.touched"
+                  class="requiredField"
+                >
+                  Campo requerido
+                </span>
+                <label class="labels">Dirección</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="direccion"
+                  #direccion="ngModel"
+                  required="true"
+                  [(ngModel)]="getIdModelo.direccion"
+                />
+              </div>
+              <!--       <div *ngIf="getIdModelo.rol == 'HOTEL'" class="col-md-12">
+                <span
+                  *ngIf="!cuartos.valid && cuartos.touched"
+                  class="requiredField"
+                >
+                  Campo requerido
+                </span>
+                <label class="labels">Habitaciones totales del hotel</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="cuartos"
+                  #cuartos="ngModel"
+                  required="true"
+                  [(ngModel)]="getIdModelo.cuartos"
+                />
+              </div> -->
+              <div *ngIf="getIdModelo.rol == 'HOTEL'" class="col-md-12">
+                <span
+                  *ngIf="!gerente.valid && gerente.touched"
+                  class="requiredField"
+                >
+                  Campo requerido
+                </span>
+                <label class="labels">Nombre del gerente</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  name="gerente"
+                  #gerente="ngModel"
+                  required="true"
+                  [(ngModel)]="getIdModelo.gerente"
+                />
+              </div>
+            </div>
+            <div class="mt-5 text-center">
+              <button
+                [disabled]="!editForm.form.valid"
+                (click)="putPerfil()"
+                class="btn btn-primary profile-button"
+                type="button"
+              >
+                Guardar cambios
+              </button>
+              <br />
+              <br />
+              <button
+                *ngIf="getIdModelo.rol == 'ADMIN'"
+                routerLink="/principal/administracion"
+                class="btn btn-primary"
+                type="button"
+              >
+                Cancelar
+              </button>
+              <button
+                *ngIf="getIdModelo.rol == 'HOTEL'"
+                routerLink="/routerHotel/hoteles"
+                class="btn btn-primary"
+                type="button"
+              >
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  y
+</body>

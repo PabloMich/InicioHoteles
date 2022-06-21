@@ -10,23 +10,40 @@ import { AdministracionComponent } from './components/administracion/administrac
 import { UsuariosRegistradosComponent } from './components/usuarios-registrados/usuarios-registrados.component';
 import { VerificacionGuard } from './guards/verificacion.guard';
 import { GraficaHotelesComponent } from './components/grafica-hoteles/grafica-hoteles.component';
+import { EventosComponent } from './components/eventos/eventos.component';
+import { PruebaComponent } from './components/prueba/prueba.component';
+import { RouterHotelComponent } from './components/router-hotel/router-hotel.component';
+import { VerificarHotelGuard } from './guards/verificar-hotel.guard';
+import { EditarComponent } from './components/editar/editar.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'inicio', component: InicioComponent },
   { path: 'usuarios', component: UsuariosComponent },
-  { path: 'hoteles', component: HotelesComponent },
-  { path: '', component: InicioComponent },
-  { path: 'administracion', component: AdministracionComponent },
-  { path: 'registrados', component: UsuariosRegistradosComponent },
-  { path: 'solicitados', component: GraficaHotelesComponent },
-  /* {
-    path: 'administracion',
-    component: UsuariosRegistradosComponent,
+  {
+    path: 'routerHotel',
+    component: RouterHotelComponent,
+    canActivate: [VerificarHotelGuard],
+    children: [
+      { path: 'hoteles', component: HotelesComponent },
+      { path: 'eventos', component: EventosComponent },
+      { path: 'editar/:ID', component: EditarComponent },
+    ],
+  },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  {
+    path: 'principal',
+    component: PruebaComponent,
     canActivate: [VerificacionGuard],
-    children: [{ path: 'registrados', component: InicioComponent }],
-  },  */
+    children: [
+      { path: 'administracion', component: AdministracionComponent },
+      { path: 'registrados', component: UsuariosRegistradosComponent },
+      { path: 'solicitados', component: GraficaHotelesComponent },
+      { path: 'editar/:ID', component: EditarComponent },
+    ],
+  },
+
   { path: '**', component: InicioComponent },
 ];
 

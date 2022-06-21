@@ -8,6 +8,9 @@ export class Entidad {
     public direccion:String,
     public cuartos:Number,
     public gerente:String,
-    public solicitado:Number
+    public solicitado:Number,
+    public dia:Number,
+    public mes:Number,
+    public anio:Number
   ){}
 }

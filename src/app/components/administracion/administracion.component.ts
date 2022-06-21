@@ -3,6 +3,7 @@ import { Entidad } from 'src/app/models/entidad.model';
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
 import { AdministracionService } from 'src/app/services/administracion.service';
+
 @Component({
   selector: 'app-administracion',
   templateUrl: './administracion.component.html',
@@ -12,13 +13,14 @@ import { AdministracionService } from 'src/app/services/administracion.service';
 export class AdministracionComponent implements OnInit {
   public getModelo: Entidad;
   public postModelo: Entidad;
+  public getIdModelo: Entidad;
   public token;
 
   constructor(
     private _adminService: AdministracionService,
-    private _loginService: LoginService
+    private _loginService: LoginService,
   ) {
-    this.postModelo = new Entidad('', '', '', '', '', '', 0, '',0);
+    this.postModelo = new Entidad('', '', '', '', '', '', 0, '', 0,0,0,0);
     this.token = this._loginService.obtenerToken();
   }
 

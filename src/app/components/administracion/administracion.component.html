@@ -4,7 +4,6 @@
     <tr>
       <th scope="col">Nombre</th>
       <th scope="col">Direccion</th>
-      <th scope="col">Cantidad de habitaciones</th>
       <th scope="col">Gerente del hotel</th>
       <th scope="col">Opciones</th>
     </tr>
@@ -13,7 +12,6 @@
     <tr *ngFor="let hoteles of getModelo">
       <td>{{ hoteles.nombre }}</td>
       <td>{{ hoteles.direccion }}</td>
-      <td>{{ hoteles.cuartos }}</td>
       <td>{{ hoteles.gerente }}</td>
       <td>
         <!--         <a
