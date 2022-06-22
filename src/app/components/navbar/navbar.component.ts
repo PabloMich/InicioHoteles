@@ -12,6 +12,23 @@ export class NavbarComponent implements OnInit {
     this.identidad = JSON.parse(localStorage.getItem('identidad'));
   }
 
+
+  toInicio(){
+    document.getElementById("hero").scrollIntoView();
+  }
+
+  toAbout(){
+    document.getElementById("about").scrollIntoView();
+  }
+
+  toServices(){
+    document.getElementById("services").scrollIntoView();
+  }
+
+  toTeam(){
+    document.getElementById("team").scrollIntoView();
+  }
+
   ngOnInit(): void {}
 
 

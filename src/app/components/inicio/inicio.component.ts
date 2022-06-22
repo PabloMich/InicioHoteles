@@ -12,5 +12,7 @@ export class InicioComponent implements OnInit {
     localStorage.clear()
   }
 
+  public secciones: Array<string> = ['primera', 'segunda', 'tercera', 'cuarta', 'quinta'];
+
 
 }

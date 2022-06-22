@@ -40,8 +40,6 @@ export class GraficaHotelesComponent implements OnInit {
       .masSolicitados(this._loginService.obtenerToken())
       .subscribe({
         next: (response: any) => {
-          console.log(response);
-          console.log(response);
           this.solicitadosModel = response.Hoteles_solicitados;
           this.solicitadosModel.forEach((dato) => {
             this.chartLabels.push(dato.nombre);

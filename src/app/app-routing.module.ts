@@ -16,6 +16,7 @@ import { RouterHotelComponent } from './components/router-hotel/router-hotel.com
 import { VerificarHotelGuard } from './guards/verificar-hotel.guard';
 import { EditarComponent } from './components/editar/editar.component';
 
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },

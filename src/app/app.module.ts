@@ -22,6 +22,16 @@ import { PruebaComponent } from './components/prueba/prueba.component';
 import { RouterHotelComponent } from './components/router-hotel/router-hotel.component';
 import { EditarComponent } from './components/editar/editar.component';
 
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
+
+
+const routerOptions: ExtraOptions = {
+  anchorScrolling: "enabled",
+  scrollPositionRestoration: 'enabled'
+}
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
