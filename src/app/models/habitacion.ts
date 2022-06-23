@@ -6,6 +6,7 @@ export class Habitacion {
     public verificar:Boolean,
     public disponibilidad:String,
     public precio:Number,
-    public idHotel:String
+    public idHotel:String,
+    public idUsuario:String
   ){}
 }

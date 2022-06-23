@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   public identidad;
 
   constructor(private _loginService: LoginService, private _router: Router) {
-    this.modelo = new Entidad('', '', '', '', '', '', 0, '', 0, 0, 0, 0);
+    this.modelo = new Entidad('', '', '', '', '', '', 0, '', 0, 0, 0, 0,'');
     this.identidad = JSON.parse(localStorage.getItem('identidad'));
   }
 
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
           if (response.Inicio_exitoso.rol == 'ADMIN') {
             this._router.navigate(['/principal/administracion']);
           } else if (response.Inicio_exitoso.rol == 'USUARIO') {
-            this._router.navigate(['/usuarios']);
+            this._router.navigate(['/routerUsuario/verHoteles']);
           } else if (response.Inicio_exitoso.rol == 'HOTEL') {
             this._router.navigate(['/routerHotel/hoteles']);
           } else {

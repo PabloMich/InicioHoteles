@@ -4,7 +4,7 @@
     <tr>
       <th scope="col">Nombre</th>
       <th scope="col">Direccion</th>
-      <th scope="col">Gerente del hotel</th>
+      <th *ngIf="this.identidad.rol == 'ADMIN'" scope="col">Gerente del hotel</th>
       <th scope="col">Opciones</th>
     </tr>
   </thead>
@@ -12,7 +12,7 @@
     <tr *ngFor="let hoteles of getModelo">
       <td>{{ hoteles.nombre }}</td>
       <td>{{ hoteles.direccion }}</td>
-      <td>{{ hoteles.gerente }}</td>
+      <td *ngIf="this.identidad.rol == 'ADMIN'" >{{ hoteles.gerente }}</td>
       <td>
         <!--         <a
           ><button
@@ -22,12 +22,17 @@
           >
             <i class="fa-solid fa-pen"></i></button
         ></a> -->
-        <a
+        <a *ngIf="this.identidad.rol == 'ADMIN'"
           ><button
             (click)="deleteHotel(hoteles._id)"
             class="btn btn-outline-danger"
           >
             <i class="fa-solid fa-trash"></i></button
+        ></a>
+        <a *ngIf="this.identidad.rol == 'USUARIO'"
+        [routerLink]="['/routerUsuario/verHotel', hoteles._id]"
+          ><button class="btn btn-outline-success">
+            <i class="fa-solid fa-eye"></i></button
         ></a>
       </td>
     </tr>
@@ -35,6 +40,7 @@
 </table>
 
 <button
+*ngFor="this.identidad.rol == 'ADMIN'"
   id="ap"
   class="btn btn-primary"
   type="button"

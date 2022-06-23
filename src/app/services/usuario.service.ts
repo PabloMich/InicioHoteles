@@ -37,4 +37,43 @@ export class UsuarioService {
       { headers: headersToken }
     );
   }
+
+  verHotel(id: String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/verHotel/' + id, {
+      headers: headersToken,
+    });
+  }
+
+  verHabitacion(id: String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/verCuarto/' + id, {
+      headers: headersToken,
+    });
+  }
+
+  reservaciones(id: String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/misReservas/' + id, {
+      headers: headersToken,
+    });
+  }
+
+  pagarHabitacion(precio: any, cuarto: any, token): Observable<any> {
+    var ID = this.identidad._id;
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.post(
+      this.url + '/pagar/' + ID + '/' + precio + '/' + cuarto,
+      {
+        headers: headersToken,
+      }
+    );
+  }
+
+  cancelarReservacion(id: String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.put(this.url + '/cancelarReservacion/' + id, {
+      headers: headersToken,
+    });
+  }
 }

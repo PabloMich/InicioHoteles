@@ -41,9 +41,27 @@
                     [(ngModel)]="postModelo.email"
                     class="form-control form-control-lg"
                     required="true"
-                    
                   />
-                  <label class="form-label" for="typeEmailX">Email</label>
+                  <label class="form-label"  for="typeEmailX">Email</label>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <span
+                    *ngIf="!telefono.valid && telefono.touched"
+                    class="requiredField"
+                  >
+                    Campo requerido
+                  </span>
+                  <input
+                    type="number"
+                    name="telefono"
+                    #telefono="ngModel"
+                    [(ngModel)]="postModelo.telefono"
+                    class="form-control form-control-lg"
+                    required="true"
+
+                  />
+                  <label class="form-label" for="typeEmailX">Número de teléfono</label>
                 </div>
 
                 <div class="form-outline form-white mb-4">

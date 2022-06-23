@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
@@ -15,13 +15,27 @@ import { PruebaComponent } from './components/prueba/prueba.component';
 import { RouterHotelComponent } from './components/router-hotel/router-hotel.component';
 import { VerificarHotelGuard } from './guards/verificar-hotel.guard';
 import { EditarComponent } from './components/editar/editar.component';
-
+import { VerificarUsuarioGuard } from './guards/verificar-usuario.guard';
+import { RouterUsuarioComponent } from './components/router-usuario/router-usuario.component';
+import { VerHotelComponent } from './components/ver-hotel/ver-hotel.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'inicio', component: InicioComponent },
-  { path: 'usuarios', component: UsuariosComponent },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  {
+    path: 'routerUsuario',
+    component: RouterUsuarioComponent,
+    canActivate: [VerificarUsuarioGuard],
+    children: [
+      { path: 'verHoteles', component: AdministracionComponent },
+      { path: 'editar/:ID', component: EditarComponent },
+      { path: 'solicitados', component: GraficaHotelesComponent },
+      { path: 'historial', component: UsuariosComponent },
+      { path: 'verHotel/:ID', component: VerHotelComponent },
+    ],
+  },
   {
     path: 'routerHotel',
     component: RouterHotelComponent,
@@ -32,7 +46,6 @@ const routes: Routes = [
       { path: 'editar/:ID', component: EditarComponent },
     ],
   },
-  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: 'principal',
     component: PruebaComponent,

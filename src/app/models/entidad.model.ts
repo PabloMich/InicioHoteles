@@ -11,6 +11,8 @@ export class Entidad {
     public solicitado:Number,
     public dia:Number,
     public mes:Number,
-    public anio:Number
+    public anio:Number,
+    public telefono:String,
+
   ){}
 }

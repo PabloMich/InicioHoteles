@@ -17,6 +17,13 @@
             src="https://img.freepik.com/vector-gratis/hotel-o-motel-vector-edificio-ciudad-ciudad-ilustracion-dibujos-animados-plana-aislado-sobre-fondo-blanco_212005-309.jpg?w=740"
           />
 
+          <img
+            *ngIf="getIdModelo.rol == 'USUARIO'"
+            class="rounded-circle mt-5"
+            width="200px"
+            src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+          />
+
           <span class="font-weight-bold">{{ getIdModelo.nombre }}</span
           ><span> </span>
         </div>
@@ -81,6 +88,28 @@
                   [(ngModel)]="getIdModelo.direccion"
                 />
               </div>
+              <div
+                *ngIf="
+                  getIdModelo.rol == 'HOTEL' || getIdModelo.rol == 'USUARIO'
+                "
+                class="col-md-12"
+              >
+                <span
+                  *ngIf="!telefono.valid && telefono.touched"
+                  class="requiredField"
+                >
+                  Campo requerido
+                </span>
+                <label class="labels">Número de teléfono</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="telefono"
+                  #telefono="ngModel"
+                  required="true"
+                  [(ngModel)]="getIdModelo.telefono"
+                />
+              </div>
               <!--       <div *ngIf="getIdModelo.rol == 'HOTEL'" class="col-md-12">
                 <span
                   *ngIf="!cuartos.valid && cuartos.touched"
@@ -128,6 +157,14 @@
               <br />
               <br />
               <button
+                *ngIf="getIdModelo.rol == 'USUARIO'"
+                routerLink="/routerUsuario/verHoteles"
+                class="btn btn-primary"
+                type="button"
+              >
+                Cancelar
+              </button>
+              <button
                 *ngIf="getIdModelo.rol == 'ADMIN'"
                 routerLink="/principal/administracion"
                 class="btn btn-primary"
@@ -149,5 +186,32 @@
       </div>
     </div>
   </div>
-  y
+
+  <h3 *ngIf="this.identidad.rol == 'USUARIO'">Mis reservaciones</h3>
+
+  <div *ngIf="this.identidad.rol == 'USUARIO'">
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered table-info border-primary">
+        <thead>
+          <tr>
+            <th scope="col">Habitaciones</th>
+            <th scope="col">Hotel</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let info of getHabitacion">
+            <td>{{ info.nombre }}</td>
+            <td>{{ info.idHotel.nombre }}</td>
+            <td>
+              <a
+                ><button (click)="cancelar(info._id)" class="btn btn-outline-danger">
+                  <i class="fa-solid fa-ban"></i></button
+              ></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>

@@ -19,7 +19,7 @@ export class HotelesComponent implements OnInit {
     private _hotelService: HotelService,
     private _loginService: LoginService
   ) {
-    this.postModelo = new Habitacion('', '', 0, true, '', 0, '');
+    this.postModelo = new Habitacion('', '', 0, true, '', 0, '','');
     this.token = this._loginService.obtenerToken();
   }
 
