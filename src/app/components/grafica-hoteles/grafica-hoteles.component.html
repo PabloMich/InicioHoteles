@@ -1,5 +1,7 @@
 <app-navbar-vistas></app-navbar-vistas>
-<div style="display: block">
+
+<div *ngIf="solicitadosModel" style="display: block">
+  <h1>Hoteles con mayor demanda</h1>
   <canvas
     baseChart
     chartType="pie"

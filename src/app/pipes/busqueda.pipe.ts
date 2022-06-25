@@ -1,21 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'busqueda'
+  name: 'busqueda',
 })
 export class BusquedaPipe implements PipeTransform {
-
-  transform(productos:any,search:any) {
-    if(!search){
-
-      return productos;
-
-    }else{
-
-      return productos.filter(producto=>{
-        return producto.nombreProducto.toLowerCase().includes(search.toLowerCase());
-      })
+  transform(users: any, search: any) {
+    if (!search) {
+      return users;
+    } else {
+      return users.filter((user) => {
+        return user.nombre.toLowerCase().includes(search.toLowerCase());
+      });
     }
   }
-
 }

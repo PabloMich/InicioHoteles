@@ -92,12 +92,6 @@
       <form #formPago="ngForm">
         <div class="modal-body">
           <div class="form-outline form-white mb-4">
-            <!--          <span
-            *ngIf="!email.valid && email.touched"
-            class="requiredField"
-          >
-            Campo requerido
-          </span> -->
             <input
               type="number"
               name="dias"
@@ -119,7 +113,13 @@
             Cancelar
           </button>
           <button
-            (click)="pagarCuarto(this.precio * this.dias, this.getIdCuarto._id,formPago)"
+            (click)="
+              pagarCuarto(
+                this.precio * this.dias,
+                this.getIdCuarto._id,
+                formPago
+              )
+            "
             type="submit"
             class="btn btn-primary"
           >

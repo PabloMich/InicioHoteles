@@ -10,7 +10,6 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { BusquedaPipe } from './pipes/busqueda.pipe';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { NavbarVistasComponent } from './components/navbar-vistas/navbar-vistas.component';
@@ -42,7 +41,6 @@ const routerOptions: ExtraOptions = {
     NavbarComponent,
     RegistroComponent,
     BusquedaPipe,
-    UsuariosComponent,
     HotelesComponent,
     AdministracionComponent,
     NavbarVistasComponent,

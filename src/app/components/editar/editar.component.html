@@ -24,10 +24,21 @@
             src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
           />
 
-          <span class="font-weight-bold">{{ getIdModelo.nombre }}</span
-          ><span> </span>
+          <span *ngIf="getIdModelo.rol == 'HOTEL'" class="font-weight-bold"
+            >Nombre del hotel: {{ getIdModelo.nombre }}</span
+          >
+          <span *ngIf="getIdModelo.rol == 'HOTEL'" class="font-weight-bold"
+            >Habitaciones por crear: {{ this.libres }}</span
+          >
+          <span
+            *ngIf="getIdModelo.rol == 'USUARIO' || getIdModelo.rol == 'ADMIN'"
+            class="font-weight-bold"
+            >Nombre: {{ getIdModelo.nombre }}</span
+          >
+          <span> </span>
         </div>
       </div>
+
       <div class="col-md-5 border-right">
         <div class="p-3 py-5">
           <div class="d-flex justify-content-between align-items-center mb-3">
@@ -71,6 +82,7 @@
                   [(ngModel)]="getIdModelo.email"
                 />
               </div>
+
               <div *ngIf="getIdModelo.rol == 'HOTEL'" class="col-md-12">
                 <span
                   *ngIf="!direccion.valid && direccion.touched"
@@ -88,6 +100,30 @@
                   [(ngModel)]="getIdModelo.direccion"
                 />
               </div>
+
+              <div
+                *ngIf="getIdModelo.rol == 'HOTEL' && this.libres == 0"
+                class="col-md-12"
+              >
+                <span
+                  *ngIf="!cuartos.valid && cuartos.touched"
+                  class="requiredField"
+                >
+                  Campo requerido
+                </span>
+                <label class="labels">Agregar más habitaciones</label>
+                <input
+                  min="0"
+                  pattern="^[0-9]+"
+                  type="number"
+                  class="form-control"
+                  name="cuartos"
+                  #cuartos="ngModel"
+                  required="true"
+                  [(ngModel)]="getIdModelo.cuartos"
+                />
+              </div>
+
               <div
                 *ngIf="
                   getIdModelo.rol == 'HOTEL' || getIdModelo.rol == 'USUARIO'
@@ -110,23 +146,7 @@
                   [(ngModel)]="getIdModelo.telefono"
                 />
               </div>
-              <!--       <div *ngIf="getIdModelo.rol == 'HOTEL'" class="col-md-12">
-                <span
-                  *ngIf="!cuartos.valid && cuartos.touched"
-                  class="requiredField"
-                >
-                  Campo requerido
-                </span>
-                <label class="labels">Habitaciones totales del hotel</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="cuartos"
-                  #cuartos="ngModel"
-                  required="true"
-                  [(ngModel)]="getIdModelo.cuartos"
-                />
-              </div> -->
+
               <div *ngIf="getIdModelo.rol == 'HOTEL'" class="col-md-12">
                 <span
                   *ngIf="!gerente.valid && gerente.touched"
@@ -162,7 +182,15 @@
                 class="btn btn-primary"
                 type="button"
               >
-                Cancelar
+                Regresar
+              </button>
+              <button
+                *ngIf="getIdModelo.rol == 'USUARIO'"
+                (click)="eliminarPerfil()"
+                class="btn btn-danger"
+                type="button"
+              >
+                Eliminar perfil
               </button>
               <button
                 *ngIf="getIdModelo.rol == 'ADMIN'"
@@ -170,7 +198,7 @@
                 class="btn btn-primary"
                 type="button"
               >
-                Cancelar
+                Regresar
               </button>
               <button
                 *ngIf="getIdModelo.rol == 'HOTEL'"
@@ -178,7 +206,7 @@
                 class="btn btn-primary"
                 type="button"
               >
-                Cancelar
+                Regresar
               </button>
             </div>
           </form>
@@ -187,7 +215,7 @@
     </div>
   </div>
 
-  <h3 *ngIf="this.identidad.rol == 'USUARIO'">Mis reservaciones</h3>
+  <h3 *ngIf="this.identidad.rol == 'USUARIO'">Mis reservaciones actuales</h3>
 
   <div *ngIf="this.identidad.rol == 'USUARIO'">
     <div class="table-responsive">
@@ -205,10 +233,33 @@
             <td>{{ info.idHotel.nombre }}</td>
             <td>
               <a
-                ><button (click)="cancelar(info._id)" class="btn btn-outline-danger">
+                ><button
+                  (click)="cancelar(info._id)"
+                  class="btn btn-outline-danger"
+                >
                   <i class="fa-solid fa-ban"></i></button
               ></a>
             </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 *ngIf="this.identidad.rol == 'USUARIO'">Historial de hospedaje</h3>
+
+
+  <div *ngIf="this.identidad.rol == 'USUARIO'">
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered table-info border-primary">
+        <thead>
+          <tr>
+            <th scope="col">Hotel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let info of getHistorial">
+            <td>{{ info.idHotel.nombre }}</td>
           </tr>
         </tbody>
       </table>

@@ -18,6 +18,7 @@ export class AdministracionComponent implements OnInit {
   public getIdModelo: Entidad;
   public token;
   public identidad;
+  public search;
 
   constructor(
     private _adminService: AdministracionService,
@@ -61,36 +62,5 @@ export class AdministracionComponent implements OnInit {
     });
   }
 
-  deleteHotel(idHotel) {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'Si eliminas a este hotel, no lo podrás recuperar.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Eliminar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this._adminService.eliminarHotel(idHotel, this.token).subscribe({
-          next: (response: any) => {
-            this.hoteles();
 
-            Swal.fire(
-              '¡Eliminado!',
-              'Has eliminado a este hotel exitósamente',
-              'success'
-            );
-          },
-          error: (error: any) => {
-            Swal.fire({
-              icon: 'error',
-              title: error.error.Error,
-            });
-          },
-        });
-      }
-    });
-  }
 }

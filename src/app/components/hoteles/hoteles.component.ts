@@ -19,7 +19,7 @@ export class HotelesComponent implements OnInit {
     private _hotelService: HotelService,
     private _loginService: LoginService
   ) {
-    this.postModelo = new Habitacion('', '', 0, true, '', 0, '','');
+    this.postModelo = new Habitacion('', '', 0, true, '', 0, '', '');
     this.token = this._loginService.obtenerToken();
   }
 
@@ -55,37 +55,5 @@ export class HotelesComponent implements OnInit {
           });
         },
       });
-  }
-
-  deleteHabitacion(idCuarto) {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'Si eliminas a esta habitación, no la podrás recuperar.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Eliminar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this._hotelService.eliminarHabitacion(idCuarto, this.token).subscribe({
-          next: (response: any) => {
-            this.habitaciones();
-            Swal.fire(
-              '¡Eliminado!',
-              'Has eliminado a esta habitación exitósamente',
-              'success'
-            );
-          },
-          error: (error: any) => {
-            Swal.fire({
-              icon: 'error',
-              title: error.error.Error,
-            });
-          },
-        });
-      }
-    });
   }
 }

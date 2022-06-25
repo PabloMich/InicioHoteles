@@ -2,11 +2,13 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Nombre</th>
+      <th scope="col">Habitación</th>
       <th scope="col">Espacio de personas</th>
       <th scope="col">Estado</th>
       <th scope="col">Precio</th>
-      <th scope="col">Opciones</th>
+
+      <th scope="col">Usuario hospedado</th>
+      <th scope="col">Modificar habitación</th>
     </tr>
   </thead>
   <tbody>
@@ -15,21 +17,15 @@
       <td>{{ cuartos.espacio }}</td>
       <td>{{ cuartos.disponibilidad }}</td>
       <td>Q{{ cuartos.precio }}</td>
+      <td *ngIf="cuartos.idHotel != null">{{ cuartos.idUsuario.nombre }}</td>
       <td>
         <a
           ><button
             data-bs-toggle="modal"
             data-bs-target="#modalEditar"
-            class="btn btn-outline-secondary"
+            class="btn btn-outline-primary"
           >
             <i class="fa-solid fa-pen"></i></button
-        ></a>
-        <a
-          ><button
-            (click)="deleteHabitacion(cuartos._id)"
-            class="btn btn-outline-danger"
-          >
-            <i class="fa-solid fa-trash"></i></button
         ></a>
       </td>
     </tr>
@@ -78,7 +74,7 @@
             />
           </div>
           <div class="mb-3">
-            <label class="form-label">Espacio</label>
+            <label class="form-label">Espacio de personas</label>
             <input
               type="number"
               class="form-control"

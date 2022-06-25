@@ -20,6 +20,8 @@ export class EditarComponent implements OnInit {
   public identidad;
   public getHabitacion: Habitacion;
   public token;
+  public libres;
+  public getHistorial: any;
 
   constructor(
     private _usuarioService: UsuarioService,
@@ -50,6 +52,7 @@ export class EditarComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe((dataRuta) => {
       this.getPerfilId(dataRuta.get('ID'));
       this.misReservaciones(dataRuta.get('ID'));
+      this.historialHabitaciones(dataRuta.get('ID'));
     });
   }
 
@@ -57,6 +60,7 @@ export class EditarComponent implements OnInit {
     this._usuarioService.perfilId(idPerfil, this.token).subscribe({
       next: (response: any) => {
         this.getIdModelo = response.Perfil;
+        this.libres = this.getIdModelo.cuartos;
       },
       error: (error: any) => {
         console.log(error);
@@ -68,7 +72,6 @@ export class EditarComponent implements OnInit {
     this._usuarioService.reservaciones(idUsuario, this.token).subscribe({
       next: (response: any) => {
         this.getHabitacion = response.Reservas;
-        console.log(response);
       },
       error: (error: any) => {
         console.log(error);
@@ -88,7 +91,10 @@ export class EditarComponent implements OnInit {
       confirmButtonText: 'Si, cancelar.',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Cancelaste la reservación.', 'success');
+        Swal.fire({
+          icon: 'success',
+          title: 'Reservación cancelada',
+        });
         this._usuarioService
           .cancelarReservacion(idCuarto, this.token)
           .subscribe({
@@ -123,6 +129,45 @@ export class EditarComponent implements OnInit {
           icon: 'error',
           title: error.error.Error,
         });
+      },
+    });
+  }
+
+  eliminarPerfil() {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Si eliminas tu cuenta, toda su información se perderá.',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar cuenta',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._usuarioService.borrarPerfil(this.token).subscribe({
+          next: (response: any) => {
+            this._router.navigate(['/inicio']);
+          },
+          error: (error: any) => {
+            Swal.fire({
+              icon: 'error',
+              title: error.error.Error,
+            });
+          },
+        });
+      }
+    });
+  }
+
+  historialHabitaciones(idUsuario) {
+    this._usuarioService.verHistorial(idUsuario, this.token).subscribe({
+      next: (response: any) => {
+        this.getHistorial = response.Historial;
+        console.log(response.Historial);
+      },
+      error: (error: any) => {
+        console.log(error);
       },
     });
   }

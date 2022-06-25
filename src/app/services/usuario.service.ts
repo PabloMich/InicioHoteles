@@ -76,4 +76,19 @@ export class UsuarioService {
       headers: headersToken,
     });
   }
+
+  borrarPerfil(token): Observable<any> {
+    let id = this.identidad._id;
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.delete(this.url + '/borrarPerfil/' + id, {
+      headers: headersToken,
+    });
+  }
+
+  verHistorial(ID:String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/historial/' + ID, {
+      headers: headersToken,
+    });
+  }
 }

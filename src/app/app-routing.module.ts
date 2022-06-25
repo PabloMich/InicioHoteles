@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { UsuariosRegistradosComponent } from './components/usuarios-registrados/usuarios-registrados.component';
@@ -32,7 +31,6 @@ const routes: Routes = [
       { path: 'verHoteles', component: AdministracionComponent },
       { path: 'editar/:ID', component: EditarComponent },
       { path: 'solicitados', component: GraficaHotelesComponent },
-      { path: 'historial', component: UsuariosComponent },
       { path: 'verHotel/:ID', component: VerHotelComponent },
     ],
   },
