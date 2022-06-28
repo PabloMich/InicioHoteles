@@ -24,6 +24,8 @@ import { EditarComponent } from './components/editar/editar.component';
 import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { RouterUsuarioComponent } from './components/router-usuario/router-usuario.component';
 import { VerHotelComponent } from './components/ver-hotel/ver-hotel.component';
+import { EdicionComponent } from './components/edicion/edicion.component';
+import { AgregarComponent } from './components/agregar/agregar.component';
 
 
 const routerOptions: ExtraOptions = {
@@ -52,6 +54,8 @@ const routerOptions: ExtraOptions = {
     EditarComponent,
     RouterUsuarioComponent,
     VerHotelComponent,
+    EdicionComponent,
+    AgregarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,ChartsModule],
   providers: [],

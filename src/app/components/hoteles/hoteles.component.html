@@ -17,12 +17,12 @@
       <td>{{ cuartos.espacio }}</td>
       <td>{{ cuartos.disponibilidad }}</td>
       <td>Q{{ cuartos.precio }}</td>
-      <td *ngIf="cuartos.idHotel != null">{{ cuartos.idUsuario.nombre }}</td>
+      <td *ngIf="!cuartos.idUsuario"></td>
+      <td *ngIf="cuartos.idUsuario">{{ cuartos.idUsuario.nombre }}</td>
       <td>
         <a
           ><button
-            data-bs-toggle="modal"
-            data-bs-target="#modalEditar"
+            [routerLink]="['/routerHotel/editarCuarto', cuartos._id]"
             class="btn btn-outline-primary"
           >
             <i class="fa-solid fa-pen"></i></button
@@ -64,6 +64,9 @@
         <form #agregarCuarto="ngForm">
           <div class="mb-3">
             <label class="form-label">Nombre</label>
+            <span *ngIf="!nombre.valid && nombre.touched" class="requiredField">
+              Campo requerido
+            </span>
             <input
               type="text"
               class="form-control"
@@ -75,6 +78,12 @@
           </div>
           <div class="mb-3">
             <label class="form-label">Espacio de personas</label>
+            <span
+              *ngIf="!espacio.valid && espacio.touched"
+              class="requiredField"
+            >
+              Campo requerido
+            </span>
             <input
               type="number"
               class="form-control"
@@ -85,7 +94,27 @@
             />
           </div>
           <div class="mb-3">
+            <label class="form-label">Descripcion</label>
+            <span
+              *ngIf="!descripcion.valid && descripcion.touched"
+              class="requiredField"
+            >
+              Campo requerido
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              name="descripcion"
+              #descripcion="ngModel"
+              [(ngModel)]="postModelo.descripcion"
+              required
+            />
+          </div>
+          <div class="mb-3">
             <label class="form-label">Precio</label>
+            <span *ngIf="!precio.valid && precio.touched" class="requiredField">
+              Campo requerido
+            </span>
             <input
               type="number"
               class="form-control"
@@ -105,6 +134,7 @@
           type="button"
           class="btn btn-primary"
           data-bs-dismiss="modal"
+          [disabled]="!agregarCuarto.form.valid"
           (click)="postHabitacion(agregarCuarto)"
         >
           Agregar

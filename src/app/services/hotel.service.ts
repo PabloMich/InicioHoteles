@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Habitacion } from '../models/habitacion';
 import { LoginService } from './login.service';
+import { Eventos } from '../models/eventos';
 
 @Injectable({
   providedIn: 'root',
@@ -37,12 +38,35 @@ export class HotelService {
     });
   }
 
-  eliminarHabitacion(id: String, token): Observable<any> {
+  cuartoPorId(ID: String, token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
-    var idHotel = this.identidad._id;
-
-    return this._http.delete(this.url + '/borrarCuarto/' + id + '/' + idHotel, {
+    return this._http.get(this.url + '/verCuarto/' + ID, {
       headers: headersToken,
     });
+  }
+
+  misEventos(token):Observable<any> {
+    var ID = this.identidad._id;
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url+"/misEventos/"+ ID, {headers: headersToken});
+  }
+
+  agregarEvento(modelo: Eventos, token): Observable<any> {
+    var ID = this.identidad._id;
+    let headersToken = this.headersVariable.set('Authorization', token);
+    let parametros = JSON.stringify(modelo);
+    return this._http.post(this.url + '/nuevoEvento/' + ID, parametros, {
+      headers: headersToken,
+    });
+  }
+
+  editarCuarto(modelo: Habitacion, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    let parametros = JSON.stringify(modelo);
+    return this._http.put(
+      this.url + '/editarCuarto/' + modelo._id,
+      parametros,
+      { headers: headersToken }
+    );
   }
 }

@@ -1,6 +1,6 @@
 <app-navbar-vistas></app-navbar-vistas>
 <h1 [textContent]="this.getIdHotel.nombre"></h1>
-
+<h2>Habitaciones del hotel</h2>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -8,7 +8,7 @@
       <th scope="col">Capacidad</th>
       <th scope="col">Estado</th>
       <th scope="col">Precio</th>
-      <th scope="col">Reservar</th>
+      <th *ngIf="this.identidad.rol == 'USUARIO'" scope="col">Reservar</th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +18,7 @@
       <td>{{ cuartos.disponibilidad }}</td>
       <td>Q{{ cuartos.precio }}</td>
 
-      <td>
+      <td *ngIf="this.identidad.rol == 'USUARIO'">
         <a *ngIf="cuartos.verificar == true"
           ><button
             (click)="getHabitacion(cuartos._id)"
@@ -33,6 +33,26 @@
             <i class="fa-solid fa-xmark"></i></button
         ></a>
       </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Eventos del hotel</h3>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre del evento</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Lugar</th>
+      <th scope="col">Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let eventos of getEventosModel">
+      <td>{{ eventos.nombre }}</td>
+      <td>{{ eventos.descripcion }}</td>
+      <td>{{ eventos.lugar }}</td>
+      <td>{{ eventos.fecha }}</td>
     </tr>
   </tbody>
 </table>
@@ -98,6 +118,9 @@
               [(ngModel)]="dias"
               class="form-control form-control-lg"
               required="true"
+              min="1"
+              pattern="^[1-9]+"
+              value="1"
             />
             <label class="form-label"
               >¿Cuántos días te quedarás con nosotros?</label
@@ -113,15 +136,10 @@
             Cancelar
           </button>
           <button
-            (click)="
-              pagarCuarto(
-                this.precio * this.dias,
-                this.getIdCuarto._id,
-                formPago
-              )
-            "
+            (click)="pagarCuarto(this.getIdCuarto._id, formPago, this.dias)"
             type="submit"
             class="btn btn-primary"
+            data-bs-dismiss="modal"
           >
             Pagar Q{{ this.precio * this.dias }}
           </button>

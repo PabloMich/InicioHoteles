@@ -38,6 +38,11 @@ export class UsuarioService {
     );
   }
 
+  eventosHotel(id:String,token):Observable<any>{
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url+"/eventoHotel/"+id, { headers: headersToken });
+  }
+
   verHotel(id: String, token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.get(this.url + '/verHotel/' + id, {
@@ -59,11 +64,11 @@ export class UsuarioService {
     });
   }
 
-  pagarHabitacion(precio: any, cuarto: any, token): Observable<any> {
+  pagarHabitacion( cuarto: any,dias:any, token): Observable<any> {
     var ID = this.identidad._id;
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.post(
-      this.url + '/pagar/' + ID + '/' + precio + '/' + cuarto,
+      this.url + '/pagar/' + ID + '/' + cuarto+"/"+dias,
       {
         headers: headersToken,
       }
@@ -91,4 +96,5 @@ export class UsuarioService {
       headers: headersToken,
     });
   }
+
 }

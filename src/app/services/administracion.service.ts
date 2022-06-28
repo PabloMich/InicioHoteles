@@ -49,4 +49,12 @@ export class AdministracionService {
       headers: headersToken,
     });
   }
+
+  editarHotel(modelo: Entidad, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    let parametros = JSON.stringify(modelo);
+    return this._http.put(this.url + '/editarHotel/' + modelo._id, parametros, {
+      headers: headersToken,
+    });
+  }
 }

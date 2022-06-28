@@ -14,12 +14,13 @@ export class HotelesComponent implements OnInit {
   public getModelo: Habitacion;
   public token;
   public postModelo: Habitacion;
+  public getIdCuarto:Habitacion;
 
   constructor(
     private _hotelService: HotelService,
     private _loginService: LoginService
   ) {
-    this.postModelo = new Habitacion('', '', 0, true, '', 0, '', '');
+    this.postModelo = new Habitacion('','', '', 0, true, '', 0, '', '');
     this.token = this._loginService.obtenerToken();
   }
 
@@ -40,6 +41,11 @@ export class HotelesComponent implements OnInit {
       },
     });
   }
+
+  getIdHabitacion(){
+
+  }
+
   postHabitacion(agregarCuarto) {
     this._hotelService
       .agregarHabitacion(this.postModelo, this.token)

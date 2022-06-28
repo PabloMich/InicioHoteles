@@ -46,21 +46,4 @@ export class AdministracionComponent implements OnInit {
       },
     });
   }
-
-  postHotel(agregarHotel) {
-    this._adminService.nuevoHotel(this.postModelo, this.token).subscribe({
-      next: (response: any) => {
-        this.hoteles();
-        agregarHotel.reset();
-      },
-      error: (error: any) => {
-        Swal.fire({
-          icon: 'error',
-          title: error.error.Error,
-        });
-      },
-    });
-  }
-
-
 }

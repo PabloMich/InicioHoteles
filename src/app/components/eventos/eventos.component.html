@@ -1,2 +1,38 @@
 <app-navbar-vistas></app-navbar-vistas>
-<p>eventos works!</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre del evento</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Lugar</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Modificar evento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let eventos of getEventosModel">
+      <td>{{ eventos.nombre }}</td>
+      <td>{{ eventos.descripcion }}</td>
+      <td>{{ eventos.lugar }}</td>
+      <td>{{ eventos.fecha }}</td>
+      <td>
+        <!--         <a
+          ><button
+            [routerLink]="['/routerHotel/editarCuarto']"
+            class="btn btn-outline-primary"
+          >
+            <i class="fa-solid fa-pen"></i></button
+        ></a> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button
+  id="ap"
+  class="btn btn-primary"
+  type="button"
+  [routerLink]="['/routerHotel/agendar', identidad._id]"
+>
+  Agendar evento
+</button>
