@@ -1,5 +1,6 @@
 #table{
-  margin-top: 190px;
+  margin-top: 150px;
+  border: #212529b8 5px solid;
 }
 
 .emp-profile{
@@ -19,7 +20,7 @@
 .profile-img .file {
   position: relative;
   overflow: hidden;
-  margin-top: -20%;
+  margin-top: -10%;
   width: 70%;
   border: none;
   border-radius: 0;
