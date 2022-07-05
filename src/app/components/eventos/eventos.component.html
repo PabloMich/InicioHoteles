@@ -1,5 +1,92 @@
 <app-navbar-vistas></app-navbar-vistas>
-<table class="table">
+
+<div class="banner">
+  <div class="capa"></div>
+  <div class="info">
+    <h1>Eventos</h1>
+    <p>El administrador del hotel puede consultar todas las reservaciones hechas, buscar a un usuario hospedado en su
+      hotel, ver las habitaciones disponibles y las facturas con todos los servicios.</p>
+  </div>
+</div>
+
+<section class="intro">
+  <div class="bg-image h-100">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <div class="title-cards">
+                    <h2>Habitaciones
+                    </h2>
+                  </div>
+
+                  <div class="wrap">
+                    <div class="search">
+                      <input type="text" class="searchTerm" placeholder="Buscar">
+                      <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <button id="ap" type="button" class="learn-more"
+                    [routerLink]="['/routerHotel/agendar', identidad._id]">
+                    <span class="circle" aria-hidden="true">
+                      <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Agregar Evento</span>
+                  </button>
+
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre del evento</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col" scope="col">Lugar</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Modificar Evento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let eventos of getEventosModel">
+                        <th scope="row">{{ eventos.nombre }}</th>
+                        <td>
+                          <span>
+                            <span>{{ eventos.descripcion }}</span>
+                          </span>
+                        </td>
+                        <td>
+                          <span>
+                            <span>{{ eventos.lugar }}</span>
+                          </span>
+                        </td>
+                        <td>
+                          <span>
+                            <span>{{ eventos.fecha }}</span>
+                          </span>
+                        </td>
+                        <td>
+                          <span>
+                            <span></span>
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Nombre del evento</th>
@@ -16,23 +103,12 @@
       <td>{{ eventos.lugar }}</td>
       <td>{{ eventos.fecha }}</td>
       <td>
-        <!--         <a
-          ><button
-            [routerLink]="['/routerHotel/editarCuarto']"
-            class="btn btn-outline-primary"
-          >
-            <i class="fa-solid fa-pen"></i></button
-        ></a> -->
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
-<button
-  id="ap"
-  class="btn btn-primary"
-  type="button"
-  [routerLink]="['/routerHotel/agendar', identidad._id]"
->
+<!-- <button id="ap" class="btn btn-primary" type="button" [routerLink]="['/routerHotel/agendar', identidad._id]">
   Agendar evento
 </button>
+ -->

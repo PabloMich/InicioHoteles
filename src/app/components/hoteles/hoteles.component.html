@@ -34,8 +34,8 @@
                     </div>
                   </div>
 
-                  <button id="ap" type="button" class="learn-more" data-bs-target="#modalAgregarHotel"
-                    data-bs-toggle="modal" [routerLink]="['/principal/nuevo']">
+                  <button id="ap" type="button" class="learn-more" data-bs-toggle="modal"
+                    data-bs-target="#modalAgregarCuarto">
                     <span class="circle" aria-hidden="true">
                       <span class="icon arrow"></span>
                     </span>
@@ -77,10 +77,17 @@
                         <td *ngIf="!cuartos.idUsuario"></td></span>
                         </span>
                         </td>
-                        <td>
+                        <!-- <td>
                           <span>
                             <span>
-                        <td *ngIf="cuartos.idUsuario">{{ cuartos.idUsuario.nombre }}</span>
+                        <td *ngIf="cuartos.idUsuario">{{ cuartos.idUsuario.nombre }} </span>
+                          </span>
+                        </td> -->
+                        <td>
+                          <span>
+                            <span><a><button [routerLink]="['/routerHotel/editarCuarto', cuartos._id]"
+                                  class="btn btn-outline-primary">
+                                  <i class="fa-solid fa-pen"></i></button></a></span>
                           </span>
                         </td>
                       </tr>
@@ -98,7 +105,7 @@
 
 <!------------------------>
 
-<table class="table">
+<!-- <table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Habitación</th>
@@ -124,11 +131,11 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
-<button id="ap" class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarCuarto">
+<!-- <button id="ap" class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarCuarto">
   Nueva habitación
-</button>
+</button> -->
 
 <div class="modal fade" id="modalAgregarCuarto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
