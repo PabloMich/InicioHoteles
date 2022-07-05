@@ -1,6 +1,6 @@
 <app-navbar-vistas></app-navbar-vistas>
 
-<div class="banner">
+<div class="banner" *ngIf="this.identidad.rol == 'ADMIN'">
   <div class="capa"></div>
   <div class="info">
     <h1>Bienvenido Administrador</h1>
@@ -8,6 +8,53 @@
       Puede ver la estadística.</p>
   </div>
 </div>
+
+<!-- <div class="slider" *ngIf="this.identidad.rol == 'USUARIO'">
+  <div class="slide-track">
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+    </div>
+    <div class="slide">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+    </div>
+  </div>
+</div> -->
 
 <section class="intro">
   <div class="bg-image h-100">
@@ -19,8 +66,8 @@
               <div class="card-body">
                 <div class="table-responsive">
                   <div class="title-cards">
-                    <h2>Control de Hoteles
-                    </h2>
+                    <h2 *ngIf="this.identidad.rol == 'ADMIN'">Control de Hoteles</h2>
+                    <h2 *ngIf="this.identidad.rol == 'USUARIO'">Hoteles</h2>
                   </div>
 
                   <div class="wrap">
@@ -40,9 +87,7 @@
                     <span class="button-text">Agregar Hotel</span>
                   </button>
 
-
-
-                  <table class="table table-hover mb-0">
+                  <table class="table table-hover mb-0" *ngIf="this.identidad.rol == 'ADMIN'">
                     <thead>
                       <tr>
                         <th scope="col">Nombre</th>
@@ -53,8 +98,8 @@
                         <th scope="col"></th>
                       </tr>
                     </thead>
-                    <tbody>
 
+                    <tbody>
                       <tr *ngFor="let hoteles of getModelo | busqueda: search">
                         <th scope="row">{{ hoteles.nombre }}</th>
                         <td>
@@ -103,6 +148,59 @@
     </div>
   </div>
 </section>
+
+<!-- -------- -->
+
+<section class="search-container" *ngIf="this.identidad.rol == 'USUARIO'">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 px-4">
+        <div class="row mt-3">
+          <div class="col-md-6 align-self-center">
+          </div>
+          <div class="col-md-6">
+            <div class="form-inline">
+            </div>
+          </div>
+        </div>
+        <div class="row search-card-result" *ngFor="let hoteles of getModelo | busqueda: search">
+          <div class="col-md-3"><img class="img-fluid" src="http://placeimg.com/640/640/arch" alt="Card image cap" />
+          </div>
+          <div class="col-md-5">
+            <h5>{{ hoteles.nombre }}</h5>
+            <div class="review"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span
+                class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></div>
+            <p>Aquí va la descripción del hotel o lo que sea xd</p>
+            <p><span class="badge bg-secondary bg-info">8.5</span> {{ hoteles.direccion }}</p>
+            <p><i class="p-3 fa fa-bath"></i><i class="p-3 fa fa-phone"></i><i class="p-3 fa fa-wifi"></i><i
+                class="p-3 fa fa-tv"></i>
+            </p>
+          </div>
+          <div class="gy-4 col-md-2 border-left text-center more-offers">
+            <p>Cuartos:</p>
+            <p>
+              123
+            </p>
+            <p>Teléfono:</p>
+            <p>123</p>
+            <p class="border-top additional">Gerente: gerente xd</p>
+          </div>
+          <div class="gy-4 col-md-2 border-left text-center more-offers">
+            <h4><span class="badge bg-secondary bg-warning">Opciones</span></h4>
+
+            <div class="text-success">
+              <p>Precio por noche</p>
+              <h5>Q123</h5>
+            </div>
+            <div class="btn btn-success" [routerLink]="['/routerUsuario/verHotel', hoteles._id]">Reservar &gt;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- -------- -->
 
 <!-- <table class="table">
   <thead class="thead-dark">

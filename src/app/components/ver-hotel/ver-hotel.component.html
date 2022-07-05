@@ -1,5 +1,6 @@
 <app-navbar-vistas></app-navbar-vistas>
 
+
 <div class="container">
   <div class="main-body">
     <div class="row gutters-sm">
@@ -11,8 +12,8 @@
                 width="150">
               <div class="mt-3">
                 <h4 [textContent]="this.getIdHotel.nombre"></h4>
-                <button id="btn" class="btn btn-primary">Editar</button>
-                <button class="btn btn-primary">Eliminar</button>
+                <button id="btn" class="btn btn-primary" *ngIf="this.identidad.rol == 'ADMIN'">Editar</button>
+                <button class="btn btn-primary" *ngIf="this.identidad.rol == 'ADMIN'">Eliminar</button>
               </div>
             </div>
           </div>
@@ -47,6 +48,7 @@
               <div class="card-body">
                 <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Habitaciones del
                     hotel</i></h6>
+
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-4">
@@ -142,7 +144,7 @@
 
 <!-- ------------------------------------ -->
 
-<!-- <h1 [textContent]="this.getIdHotel.nombre"></h1>
+<h1 [textContent]="this.getIdHotel.nombre"></h1>
 <h2>Habitaciones del hotel</h2>
 <table class="table">
   <thead class="thead-dark">
@@ -190,7 +192,7 @@
       <td>{{ eventos.fecha }}</td>
     </tr>
   </tbody>
-</table> -->
+</table>
 
 <!-- <footer class="text-center text-lg-start bg-light text-muted">
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">

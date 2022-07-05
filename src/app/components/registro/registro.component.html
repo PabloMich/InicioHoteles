@@ -10,86 +10,43 @@
                 <h2 class="fw-bold mb-2 text-uppercase">Regístrate</h2>
 
                 <div class="form-outline form-white mb-4">
-                  <span
-                    *ngIf="!nombre.valid && nombre.touched"
-                    class="requiredField"
-                  >
+                  <span *ngIf="!nombre.valid && nombre.touched" class="requiredField">
                     Campo requerido
                   </span>
-                  <input
-                    type="text"
-                    name="nombre"
-                    #nombre="ngModel"
-                    [(ngModel)]="postModelo.nombre"
-                    class="form-control form-control-lg"
-                    required="true"
-                  />
+                  <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="postModelo.nombre"
+                    class="form-control form-control-lg" required="true" />
                   <label class="form-label">Nombre</label>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                  <span
-                    *ngIf="!email.valid && email.touched"
-                    class="requiredField"
-                  >
+                  <span *ngIf="!email.valid && email.touched" class="requiredField">
                     Campo requerido
                   </span>
-                  <input
-                    type="email"
-                    name="email"
-                    #email="ngModel"
-                    [(ngModel)]="postModelo.email"
-                    class="form-control form-control-lg"
-                    required="true"
-                  />
-                  <label class="form-label"  for="typeEmailX">Email</label>
+                  <input type="email" name="email" #email="ngModel" [(ngModel)]="postModelo.email"
+                    class="form-control form-control-lg" required="true" />
+                  <label class="form-label" for="typeEmailX">Email</label>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                  <span
-                    *ngIf="!telefono.valid && telefono.touched"
-                    class="requiredField"
-                  >
+                  <span *ngIf="!telefono.valid && telefono.touched" class="requiredField">
                     Campo requerido
                   </span>
-                  <input
-                    type="number"
-                    name="telefono"
-                    #telefono="ngModel"
-                    [(ngModel)]="postModelo.telefono"
-                    class="form-control form-control-lg"
-                    required="true"
-
-                  />
+                  <input type="number" name="telefono" #telefono="ngModel" [(ngModel)]="postModelo.telefono"
+                    class="form-control form-control-lg" required="true" />
                   <label class="form-label" for="typeEmailX">Número de teléfono</label>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                  <span
-                    *ngIf="!password.valid && password.touched"
-                    class="requiredField"
-                  >
+                  <span *ngIf="!password.valid && password.touched" class="requiredField">
                     Campo requerido
                   </span>
-                  <input
-                    type="password"
-                    name="password"
-                    #password="ngModel"
-                    [(ngModel)]="postModelo.password"
-                    class="form-control form-control-lg"
-                    required="true"
-                  />
-                  <label class="form-label" for="typePasswordX"
-                    >Contraseña</label
-                  >
+                  <input type="password" name="password" #password="ngModel" [(ngModel)]="postModelo.password"
+                    class="form-control form-control-lg" required="true" />
+                  <label class="form-label" for="typePasswordX">Contraseña</label>
                 </div>
 
-                <button
-                  (click)="postUsuarios()"
-                  class="btn btn-outline-light btn-lg px-5"
-                  [disabled]="!registerForm.form.valid"
-                  type="submit"
-                >
+                <button (click)="postUsuarios()" class="btn btn-outline-light btn-lg px-5"
+                  [disabled]="!registerForm.form.valid" type="submit">
                   Guardar datos
                 </button>
               </div>
@@ -97,12 +54,7 @@
               <div>
                 <p class="mb-0">
                   ¿Ya tienes una cuenta?
-                  <a
-                    routerLink="/login"
-                    routerLinkActive="active"
-                    class="link-danger"
-                    >Iniciar sesión</a
-                  >
+                  <a routerLink="/login" routerLinkActive="active" class="link-danger">Iniciar sesión</a>
                 </p>
               </div>
             </form>
